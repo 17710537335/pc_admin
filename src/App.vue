@@ -9,7 +9,9 @@
 export default {
   name: 'App',
   data () {
-    return {}
+    return {
+      str: '1234',
+    }
   },
   created () {
 
