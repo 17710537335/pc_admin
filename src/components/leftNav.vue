@@ -54,6 +54,8 @@ export default {
     'sub-menu': SubMenu
   },
   created () {
+    console.log(123)
+    console.log(456)
     let list = this.mainMenu.filter(item => item.path === '/')
     list.map((item, index) => {
       item.key = index + 1

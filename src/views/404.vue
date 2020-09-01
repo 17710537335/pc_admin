@@ -11,6 +11,10 @@
 <script>
 export default {
   name: 'Error404',
+  created () {
+    console.log(456)
+    console.log(123)
+  },
   methods: {
     toHome () {
       this.$router.push({ path: '/' })
