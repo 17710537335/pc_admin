@@ -24,11 +24,22 @@ export const asyncRouter = [
     name: 'layout',
     component: layout,
     meta: { title: '首页', keepAlive: true, icon: 'bxAnaalyse' },
-    redirect: '/index/workplace',
+    redirect: '/index',
     children: [
       // 基本内容
       {
         path: '/index',
+        name: 'index',
+        component: () => import('@/views/index'),
+        meta: {
+          title: '首页',
+          keepAlive: true,
+          icon: 'bxAnaalyse',
+          permission: [ 'index' ]
+        }
+      },
+      {
+        path: '/index2',
         name: 'index',
         redirect: '/index/workplace',
         component: RouteView,
@@ -37,7 +48,7 @@ export const asyncRouter = [
           {
             path: '/index/workplace',
             name: 'workplace',
-            component: () => import('@/views/workplace'),
+            component: () => import('@/views/index'),
             meta: {
               title: '工作台',
               keepAlive: true,
@@ -48,7 +59,7 @@ export const asyncRouter = [
           {
             path: '/index/workplace2',
             name: 'workplace2',
-            component: () => import('@/views/workplace'),
+            component: () => import('@/views/index'),
             meta: {
               title: '工作台2',
               keepAlive: true,

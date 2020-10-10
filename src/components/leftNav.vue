@@ -3,7 +3,7 @@
   <template v-for="(item,index) in list">
     <a-menu-item v-if="!item.children" :key="item.key">
       <a-icon type="pie-chart" />
-      <span>{{ item.title }}</span>
+      <span>{{ item.name }}</span>
     </a-menu-item>
     <sub-menu v-else :key="item.key" :menu-info="item" :menu-index="index"/>
   </template>
@@ -17,12 +17,12 @@ const SubMenu = {
   template: `
       <a-sub-menu :key="menuInfo.key" v-bind="$props" v-on="$listeners">
         <span slot="title">
-          <a-icon type="mail" /><span>{{ menuInfo.title }}</span>
+          <a-icon type="mail" /><span>{{ menuInfo.name }}</span>
         </span>
         <template v-for="(item,index) in menuInfo.children">
           <a-menu-item v-if="!item.children" :key="item.key">
             <a-icon type="pie-chart" />
-            <span>{{ item.title }}</span>
+            <span>{{ item.name }}</span>
           </a-menu-item>
           <sub-menu v-else :key="item.key" :menu-info="item"/>
         </template>
@@ -54,14 +54,13 @@ export default {
     'sub-menu': SubMenu
   },
   created () {
-    console.log(123)
-    console.log(456)
-    let list = this.mainMenu.filter(item => item.path === '/')
+    let list = this.mainMenu.filter(item => item.path === '/')[0].children
     list.map((item, index) => {
       item.key = index + 1
       this.hasChildren(item.children, item.key)
       return item
     })
+    this.list = list
     // this.getMenuList(this.mainMenu[0].children)
     console.log(list, '##########', this.list)
   },

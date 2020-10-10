@@ -7,22 +7,22 @@ function filterAsyncRouter (router, roles) {
     console.log(item)
     if (item.meta) {
       if (item.meta.permission) {
-      //   if (item.children) {
-      //     item.children = filterAsyncRouter(item.children, roles)
-      //     return true
-      //   }
+        if (item.children) {
+          item.children = filterAsyncRouter(item.children, roles)
+          return true
+        }
         return roles.some(sitem => item.meta.permission.includes(sitem))
       }
       return true
     } else {
-      // if (item.children) {
-      //   item.children = filterAsyncRouter(item.children, roles)
-      //   return true
-      // }
+      if (item.children) {
+        item.children = filterAsyncRouter(item.children, roles)
+        return true
+      }
       return true
     }
   })
-  console.log(filterRouter)
+  // console.log(filterRouter, '$$$$$$$$$')
   return filterRouter
 }
 
