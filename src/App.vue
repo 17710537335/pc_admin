@@ -10,7 +10,7 @@ export default {
   name: 'App',
   data () {
     return {
-      str: '1234',
+      str: '11111222223333344444',
     }
   },
   created () {
